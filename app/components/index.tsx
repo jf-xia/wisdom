@@ -47,7 +47,7 @@ const Main: FC = () => {
 
   useEffect(() => {
     if (APP_INFO?.title)
-      document.title = `${APP_INFO.title} - Powered by Dify`
+      document.title = `${APP_INFO.title}`
   }, [APP_INFO?.title])
 
   // onData change thought (the produce obj). https://github.com/immerjs/immer/issues/576
@@ -199,7 +199,7 @@ const Main: FC = () => {
     if (calculatedIntroduction && calculatedPromptVariables)
       calculatedIntroduction = replaceVarWithValues(calculatedIntroduction, promptConfig?.prompt_variables || [], calculatedPromptVariables)
 
-    const openstatement = {
+    const openStatement = {
       id: `${Date.now()}`,
       content: calculatedIntroduction,
       isAnswer: true,
