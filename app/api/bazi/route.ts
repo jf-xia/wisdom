@@ -13,13 +13,14 @@ export async function GET(request: NextRequest) {
   const month = params.get('month')
   const day = params.get('day')
   const hour = params.get('hour')
+  const sex = params.get('sex') === '1' ? 1 : 0
 
   lunisolar.extend(char8ex)
   lunisolar.extend(fetalGod)
 
   const d = lunisolar(`${year}/${month}/${day} ${hour}:00`)
   const branch = d.char8.year.branch
-  const c8ex = d.char8ex(1)
+  const c8ex = d.char8ex(sex)
 
   const result = {
     今天: new Date().toDateString(),
