@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
   const result = {
     今天: new Date().toDateString(),
     說明: '八字, 十神, 纳音, 神煞, 空亡地支 都是按 {年 月 日 時} 格式排列, 多個通過,分隔',
-    性別: c8ex.sex,
+    性別: c8ex.sex + (sex === 1 ? ' (男)' : ' (女)'),
     生日: {
       阳历: d.format('YYYY年MM月DD日 HH时'),
       阴历: d.lunar.toString(),
@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
     空亡地支: `${c8ex.year.missing.map(i => i.name)} ${c8ex.month.missing.map(i => i.name)} ${c8ex.day.missing.map(i => i.name)} ${c8ex.hour.missing.map(i => i.name)}`,
   }
 
-  // console.log(result,branch.name.toString()+'\n------索引------',branch.value.toString()+'\n------五行------',branch.e5.toString()+'\n------地支藏干------',branch.hiddenStems.toString()+'\n-----三合地支-------',branch.triad.toString()+'\n------三合地支五行------',branch.triadE5.toString()+'\n------六合地支------',branch.group6.toString()+'\n------六合地支五行------',branch.group6E5.toString()+'\n-----相刑-------',branch.punishing.toString()+'\n------------',branch.punishBy.toString()+'\n------相冲------',branch.conflict.toString()+'\n------相破------',branch.destroying.toString()+'\n------相害------',branch.harming.toString()+'\n------------',lunisolar.Branch.getNames());
+  console.log(result, `${branch.name.toString()}\n------索引------`, `${branch.value.toString()}\n------五行------`, `${branch.e5.toString()}\n------地支藏干------`, `${branch.hiddenStems.toString()}\n-----三合地支-------`, `${branch.triad.toString()}\n------三合地支五行------`, `${branch.triadE5.toString()}\n------六合地支------`, `${branch.group6.toString()}\n------六合地支五行------`, `${branch.group6E5.toString()}\n-----相刑-------`, `${branch.punishing.toString()}\n------------`, `${branch.punishBy.toString()}\n------相冲------`, `${branch.conflict.toString()}\n------相破------`, `${branch.destroying.toString()}\n------相害------`, `${branch.harming.toString()}\n------------`, lunisolar.Branch.getNames())
 
   try {
     const data = result// await client.getApplicationParameters(user)
